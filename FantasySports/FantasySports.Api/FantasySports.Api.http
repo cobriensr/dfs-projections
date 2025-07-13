@@ -1,0 +1,6 @@
+@FantasySports.Api_HostAddress = http://localhost:5036
+
+GET {{FantasySports.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
