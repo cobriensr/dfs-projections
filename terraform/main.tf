@@ -79,7 +79,7 @@ resource "aws_security_group" "app_sg" {
 # DB subnet group
 resource "aws_db_subnet_group" "aurora_subnet_group" {
   name       = "${var.project_name}-aurora-subnet-group"
-  subnet_ids = aws_subnet.private[*].id
+  subnet_ids = aws_subnet.public[*].id
 
   tags = {
     Name = "${var.project_name}-aurora-subnet-group"

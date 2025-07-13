@@ -39,6 +39,12 @@ resource "aws_rds_cluster" "fantasy_db" {
   # Enable logging
   enabled_cloudwatch_logs_exports = ["postgresql"]
 
+    lifecycle {
+      replace_triggered_by = [
+        aws_db_subnet_group.aurora_subnet_group
+      ]
+  }
+
   tags = {
     Name        = "${var.project_name}-aurora-cluster"
     Environment = var.environment
@@ -52,6 +58,8 @@ resource "aws_rds_cluster_instance" "fantasy_db_instance" {
   instance_class     = "db.serverless"
   engine             = aws_rds_cluster.fantasy_db.engine
   engine_version     = aws_rds_cluster.fantasy_db.engine_version
+
+  publicly_accessible = true
 
   tags = {
     Name        = "${var.project_name}-aurora-instance"
