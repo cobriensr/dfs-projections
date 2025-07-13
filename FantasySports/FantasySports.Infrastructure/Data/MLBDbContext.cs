@@ -19,6 +19,7 @@ namespace FantasySports.Infrastructure.Data
         public DbSet<MLBPlayerSeasonProjection> PlayerSeasonProjections { get; set; }
         public DbSet<MLBInning> Innings { get; set; }
         public DbSet<MLBTeamGame> TeamGames { get; set; }
+        public DbSet<MLBTeamSeason> TeamSeasons { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
