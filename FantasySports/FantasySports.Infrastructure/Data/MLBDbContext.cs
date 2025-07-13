@@ -8,7 +8,6 @@ namespace FantasySports.Infrastructure.Data
     public class MLBDbContext : DbContext
     {
         public MLBDbContext(DbContextOptions<MLBDbContext> options) : base(options) { }
-
         public DbSet<MLBTeam> Teams { get; set; }
         public DbSet<MLBPlayer> Players { get; set; }
         public DbSet<MLBStadium> Stadiums { get; set; }
@@ -53,7 +52,52 @@ namespace FantasySports.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Apply to all entities that inherit from MLBBaseEntity
+            // Use schema for MLB
+            modelBuilder.HasDefaultSchema("mlb");
+
+            // Configure MLB Game relationships
+            modelBuilder.Entity<MLBGame>(entity =>
+            {
+                entity.HasOne(g => g.HomeTeamEntity)
+                    .WithMany(t => t.HomeGames)
+                    .HasForeignKey(g => g.HomeTeamId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(g => g.AwayTeamEntity)
+                    .WithMany(t => t.AwayGames)
+                    .HasForeignKey(g => g.AwayTeamId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(g => g.Stadium)
+                    .WithMany()
+                    .HasForeignKey(g => g.StadiumId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Configure other relationships as needed
+            modelBuilder.Entity<MLBPlayerGame>(entity =>
+            {
+                entity.HasOne(pg => pg.Player)
+                    .WithMany(p => p.GameStats)
+                    .HasForeignKey(pg => pg.PlayerId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(pg => pg.Game)
+                    .WithMany(g => g.PlayerStats)
+                    .HasForeignKey(pg => pg.GameId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Configure team relationships
+            modelBuilder.Entity<MLBPlayer>(entity =>
+            {
+                entity.HasOne(p => p.TeamEntity)
+                    .WithMany(t => t.Players)
+                    .HasForeignKey(p => p.TeamId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Your existing base entity configuration
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(e => typeof(MLBBaseEntity).IsAssignableFrom(e.ClrType)))
             {

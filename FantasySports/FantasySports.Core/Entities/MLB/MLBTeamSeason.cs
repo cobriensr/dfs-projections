@@ -21,7 +21,6 @@ namespace FantasySports.Core.Entities.MLB
         public string? Homeruns { get; set; }
         public int? Runsbattedin { get; set; }
         public string? Battingaverage { get; set; }
-
         public string? Outs { get; set; }
         public string? Strikeouts { get; set; }
         public string? Walks { get; set; }
@@ -48,12 +47,10 @@ namespace FantasySports.Core.Entities.MLB
         public string? Pitchingwalks { get; set; }
         public string? Pitchingstrikeouts { get; set; }
         public string? Pitchinghomeruns { get; set; }
-
         public string? Pitchesthrown { get; set; }
         public string? Pitchesthrownstrikes { get; set; }
         public string? Walkshitsperinningspitched { get; set; }
         public string? Pitchingbattingaverageagainst { get; set; }
-
         public string? Fantasypointsfanduel { get; set; }
         public string? Fantasypointsdraftkings { get; set; }
         public decimal? Weightedonbasepercentage { get; set; }
@@ -65,9 +62,7 @@ namespace FantasySports.Core.Entities.MLB
         public string? Pitchingstrikeoutspernineinnings { get; set; }
         public string? Pitchingwalkspernineinnings { get; set; }
         public string? Pitchingweightedonbasepercentage { get; set; }
-
         public string? Fantasypointsbatting { get; set; }
-
         public string? Fantasypointspitching { get; set; }
     }
 }

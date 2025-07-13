@@ -4,7 +4,7 @@ namespace FantasySports.Core.Entities.MLB
     {
         public int Id { get; set; }
         public int TeamId { get; set; }
-        public virtual MLBTeam? Team { get; set; }
+        public virtual MLBTeam? TeamEntity { get; set; }
         public string? Key { get; set; }
         public bool? Active { get; set; }
         public string? City { get; set; }
