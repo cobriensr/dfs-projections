@@ -17,6 +17,7 @@ namespace FantasySports.Infrastructure.Data
         public DbSet<CFBPlayerGameProjection> PlayerGameProjections { get; set; }
         public DbSet<CFBPlayerSeason> PlayerSeasons { get; set; }
         public DbSet<CFBTeamGame> TeamGames { get; set; }
+        public DbSet<CFBTeamSeason> TeamSeasons { get; set; }
         public DbSet<CFBPeriod> Periods { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
