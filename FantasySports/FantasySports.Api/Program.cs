@@ -36,6 +36,10 @@ app.MapControllers();
 
 await app.RunAsync();
 
-// dotnet ef migrations add InitialNFL -c NFLDbContext
-// dotnet ef migrations add InitialMLB -c MLBDbContext
-// dotnet ef migrations add InitialCFB -c CFBDbContext
+// To create migrations for each context, run the following commands in the terminal:
+// dotnet ef migrations add InitialNFL -c NFLDbContext -p ../FantasySports.Infrastructure -o Data/Migrations/NFL
+// dotnet ef migrations add InitialMLB -c MLBDbContext -p ../FantasySports.Infrastructure -o Data/Migrations/MLB
+// dotnet ef migrations add InitialCFB -c CFBDbContext -p ../FantasySports.Infrastructure -o Data/Migrations/CFB
+// dotnet ef database update -c NFLDbContext
+// dotnet ef database update -c MLBDbContext
+// dotnet ef database update -c CFBDbContext
