@@ -4,18 +4,17 @@ namespace FantasySports.Core.Entities.MLB
     {
         public int Id { get; set; }
         public int GameId { get; set; }
-        public virtual MLBGame? Game { get; set; }
         public int? Season { get; set; }
-        public int? Seasontype { get; set; }
+        public int? SeasonType { get; set; }
         public string? Status { get; set; }
         public DateTime? Day { get; set; }
         public DateTime? Datetime { get; set; }
         public string? Awayteam { get; set; }
         public string? Hometeam { get; set; }
-        public int AwayTeamId { get; set; }
-        public virtual MLBTeam? AwayTeam { get; set; }
-        public int HomeTeamId { get; set; }
-        public virtual MLBTeam? HomeTeam { get; set; }
+        public int? AwayTeamId { get; set; }
+        public virtual MLBTeam? AwayTeamEntity { get; set; }
+        public int? HomeTeamId { get; set; }
+        public virtual MLBTeam? HomeTeamEntity { get; set; }
         public int StadiumId { get; set; }
         public virtual MLBStadium? Stadium { get; set; }
         public string? Awayteamruns { get; set; }
