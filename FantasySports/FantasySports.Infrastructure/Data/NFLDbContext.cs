@@ -12,13 +12,19 @@ namespace FantasySports.Infrastructure.Data
         public DbSet<NFLTeam> Teams { get; set; }
         public DbSet<NFLPlayer> Players { get; set; }
         public DbSet<NFLStadium> Stadiums { get; set; }
-        public DbSet<NFLGame> Games { get; set; }
+        public DbSet<NFLStanding> Standings { get; set; }
         public DbSet<NFLPlayerGame> PlayerGames { get; set; }
         public DbSet<NFLPlayerGameProjection> PlayerGameProjections { get; set; }
         public DbSet<NFLPlayerSeason> PlayerSeasons { get; set; }
         public DbSet<NFLPlayerSeasonProjection> PlayerSeasonProjections { get; set; }
         public DbSet<NFLFantasyDefenseGame> FantasyDefenseGames { get; set; }
+        public DbSet<NFLFantasyDefenseGameProjection> FantasyDefenseGameProjections { get; set; }
+        public DbSet<NFLFantasyDefenseSeason> FantasyDefenseSeasons { get; set; }
+        public DbSet<NFLFantasyDefenseSeasonProjection> FantasyDefenseSeasonProjections { get; set; }
+        public DbSet<NFLTeamSeason> TeamSeasons { get; set; }
         public DbSet<NFLTeamGame> TeamGames { get; set; }
+        public DbSet<NFLScore> Scores { get; set; }
+        public DbSet<NFLQuarter> Quarters { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
