@@ -1,0 +1,36 @@
+# .flake8
+# Place this file in your scripts/ directory or project root
+
+[flake8]
+# Increase line length limit
+max-line-length = 120
+
+# Ignore certain errors
+ignore =
+    # E501: line too long (handled by max-line-length)
+    E501,
+    # W503: line break before binary operator (conflicts with W504)
+    W503,
+    # E203: whitespace before ':' (conflicts with black formatter)
+    E203
+
+# Exclude directories
+exclude =
+    .git,
+    __pycache__,
+    venv,
+    .venv,
+    env,
+    .env,
+    build,
+    dist,
+    *.egg-info,
+    .pytest_cache,
+    .mypy_cache
+
+# Configure complexity
+max-complexity = 10
+
+# Configure import order
+import-order-style = google
+application-import-names = scripts

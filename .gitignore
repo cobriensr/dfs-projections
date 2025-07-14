@@ -81,3 +81,15 @@ nunit-*.xml
 
 # Or all Development settings files
 **/appsettings.Development.json
+
+# Python
+scripts/imports/venv/
+scripts/imports/__pycache__/
+*.pyc
+
+# Data files
+scripts/data/
+*.csv
+
+# But keep the directory structure
+!scripts/data/.gitkeep

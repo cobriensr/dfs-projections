@@ -1,0 +1,75 @@
+# .pylintrc
+
+[MASTER]
+# Ignore certain files/folders
+ignore=venv,env,.venv,.env,migrations
+
+# Use multiple processes to speed up Pylint
+jobs=0
+
+[MESSAGES CONTROL]
+# Disable specific warnings
+disable=
+    # C0301: Line too long (handled by line-length setting)
+    line-too-long,
+    # C0114: Missing module docstring
+    missing-module-docstring,
+    # C0115: Missing class docstring
+    missing-class-docstring,
+    # C0116: Missing function docstring
+    missing-function-docstring,
+    # R0913: Too many arguments
+    too-many-arguments,
+    # R0914: Too many local variables
+    too-many-locals,
+    # W0511: TODO comments
+    fixme,
+    # C0103: Invalid name (for DataFrame 'df' which is common in pandas)
+    invalid-name
+
+[FORMAT]
+# Maximum line length
+max-line-length=120
+
+# Allow the body of a class to be on the same line as the declaration
+single-line-class-stmt=no
+
+# Allow the body of an if to be on the same line as the test
+single-line-if-stmt=no
+
+[BASIC]
+# Good variable names which should always be accepted
+good-names=i,j,k,_,df,ax,fig,e,f,id
+
+# Regular expression matching correct variable names
+variable-rgx=[a-z_][a-z0-9_]{0,30}$
+
+# Regular expression matching correct function names
+function-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Regular expression matching correct method names
+method-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Regular expression matching correct attribute names
+attr-rgx=[a-z_][a-z0-9_]{0,30}$
+
+[DESIGN]
+# Maximum number of arguments for function / method
+max-args=10
+
+# Maximum number of locals for function / method body
+max-locals=20
+
+# Maximum number of return / yield for function / method body
+max-returns=6
+
+# Maximum number of statements in function / method body
+max-statements=50
+
+[IMPORTS]
+# Allow wildcard imports from specific modules
+allow-wildcard-with-all=yes
+
+[EXCEPTIONS]
+# Exceptions that will emit a warning when being caught
+overgeneral-exceptions=BaseException,Exception
