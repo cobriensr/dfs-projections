@@ -76,5 +76,8 @@ nunit-*.xml
 # VS Code settings
 .vscode/
 
-# App Settings
+# App Settings Specific file
 ./FantasySports/FantasySports.Api/appsettings.Development.json
+
+# Or all Development settings files
+**/appsettings.Development.json
