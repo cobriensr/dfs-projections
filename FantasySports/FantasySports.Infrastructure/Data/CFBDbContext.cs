@@ -84,7 +84,7 @@ namespace FantasySports.Infrastructure.Data
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
-            // Your existing base entity configuration
+            // Apply to all entities that inherit from CFBBaseEntity
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(e => typeof(CFBBaseEntity).IsAssignableFrom(e.ClrType)))
             {
