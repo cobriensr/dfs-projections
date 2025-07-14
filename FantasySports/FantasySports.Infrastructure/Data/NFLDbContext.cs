@@ -58,6 +58,9 @@ namespace FantasySports.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Use schema for NFL
+            modelBuilder.HasDefaultSchema("nfl");
+
             // Apply to all entities that inherit from NFLBaseEntity
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(e => typeof(NFLBaseEntity).IsAssignableFrom(e.ClrType)))

@@ -7,13 +7,17 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FantasySports.Infrastructure.Data.Migrations.NFL
 {
     /// <inheritdoc />
-    public partial class InitialNFL : Migration
+    public partial class UpdatedNFL : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "nfl");
+
             migrationBuilder.CreateTable(
                 name: "Quarters",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -37,6 +41,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "Stadiums",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -63,6 +68,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_Stadiums_Stadiums_StadiumId",
                         column: x => x.StadiumId,
+                        principalSchema: "nfl",
                         principalTable: "Stadiums",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -70,6 +76,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "TeamSeasons",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -233,6 +240,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "Scores",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -282,6 +290,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_Scores_Stadiums_StadiumId",
                         column: x => x.StadiumId,
+                        principalSchema: "nfl",
                         principalTable: "Stadiums",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -289,6 +298,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "Teams",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -325,6 +335,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_Teams_Stadiums_StadiumId",
                         column: x => x.StadiumId,
+                        principalSchema: "nfl",
                         principalTable: "Stadiums",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -332,6 +343,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "Players",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -377,18 +389,21 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_Players_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Players_Teams_NFLTeamId",
                         column: x => x.NFLTeamId,
+                        principalSchema: "nfl",
                         principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Standings",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -429,12 +444,14 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_Standings_Teams_TeamEntityId",
                         column: x => x.TeamEntityId,
+                        principalSchema: "nfl",
                         principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "TeamGames",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -609,12 +626,14 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_TeamGames_Teams_TeamEntityId",
                         column: x => x.TeamEntityId,
+                        principalSchema: "nfl",
                         principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "FantasyDefenseGameProjections",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -667,18 +686,21 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_FantasyDefenseGameProjections_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_FantasyDefenseGameProjections_Teams_TeamEntityId",
                         column: x => x.TeamEntityId,
+                        principalSchema: "nfl",
                         principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "FantasyDefenseGames",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -731,18 +753,21 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_FantasyDefenseGames_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_FantasyDefenseGames_Teams_TeamEntityId",
                         column: x => x.TeamEntityId,
+                        principalSchema: "nfl",
                         principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "FantasyDefenseSeasonProjections",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -793,6 +818,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_FantasyDefenseSeasonProjections_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -800,6 +826,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "FantasyDefenseSeasons",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -850,6 +877,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_FantasyDefenseSeasons_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -857,6 +885,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "PlayerGameProjections",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -952,18 +981,21 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_PlayerGameProjections_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PlayerGameProjections_Teams_TeamEntityId",
                         column: x => x.TeamEntityId,
+                        principalSchema: "nfl",
                         principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "PlayerSeasonProjections",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -1055,6 +1087,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_PlayerSeasonProjections_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -1062,6 +1095,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "PlayerSeasons",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -1153,6 +1187,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_PlayerSeasons_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -1160,6 +1195,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
             migrationBuilder.CreateTable(
                 name: "PlayerGames",
+                schema: "nfl",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -1258,218 +1294,261 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     table.ForeignKey(
                         name: "FK_PlayerGames_FantasyDefenseGames_NFLFantasyDefenseGameId",
                         column: x => x.NFLFantasyDefenseGameId,
+                        principalSchema: "nfl",
                         principalTable: "FantasyDefenseGames",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_PlayerGames_PlayerGames_NFLPlayerGameId",
                         column: x => x.NFLPlayerGameId,
+                        principalSchema: "nfl",
                         principalTable: "PlayerGames",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_PlayerGames_Players_PlayerId",
                         column: x => x.PlayerId,
+                        principalSchema: "nfl",
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PlayerGames_TeamGames_NFLTeamGameId",
                         column: x => x.NFLTeamGameId,
+                        principalSchema: "nfl",
                         principalTable: "TeamGames",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_PlayerGames_Teams_TeamEntityId",
                         column: x => x.TeamEntityId,
+                        principalSchema: "nfl",
                         principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseGameProjections_IsDeleted",
+                schema: "nfl",
                 table: "FantasyDefenseGameProjections",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseGameProjections_PlayerId",
+                schema: "nfl",
                 table: "FantasyDefenseGameProjections",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseGameProjections_TeamEntityId",
+                schema: "nfl",
                 table: "FantasyDefenseGameProjections",
                 column: "TeamEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseGames_IsDeleted",
+                schema: "nfl",
                 table: "FantasyDefenseGames",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseGames_PlayerId",
+                schema: "nfl",
                 table: "FantasyDefenseGames",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseGames_TeamEntityId",
+                schema: "nfl",
                 table: "FantasyDefenseGames",
                 column: "TeamEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseSeasonProjections_IsDeleted",
+                schema: "nfl",
                 table: "FantasyDefenseSeasonProjections",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseSeasonProjections_PlayerId",
+                schema: "nfl",
                 table: "FantasyDefenseSeasonProjections",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseSeasons_IsDeleted",
+                schema: "nfl",
                 table: "FantasyDefenseSeasons",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FantasyDefenseSeasons_PlayerId",
+                schema: "nfl",
                 table: "FantasyDefenseSeasons",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGameProjections_IsDeleted",
+                schema: "nfl",
                 table: "PlayerGameProjections",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGameProjections_PlayerId",
+                schema: "nfl",
                 table: "PlayerGameProjections",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGameProjections_TeamEntityId",
+                schema: "nfl",
                 table: "PlayerGameProjections",
                 column: "TeamEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGames_IsDeleted",
+                schema: "nfl",
                 table: "PlayerGames",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGames_NFLFantasyDefenseGameId",
+                schema: "nfl",
                 table: "PlayerGames",
                 column: "NFLFantasyDefenseGameId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGames_NFLPlayerGameId",
+                schema: "nfl",
                 table: "PlayerGames",
                 column: "NFLPlayerGameId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGames_NFLTeamGameId",
+                schema: "nfl",
                 table: "PlayerGames",
                 column: "NFLTeamGameId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGames_PlayerId",
+                schema: "nfl",
                 table: "PlayerGames",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerGames_TeamEntityId",
+                schema: "nfl",
                 table: "PlayerGames",
                 column: "TeamEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_IsDeleted",
+                schema: "nfl",
                 table: "Players",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_NFLTeamId",
+                schema: "nfl",
                 table: "Players",
                 column: "NFLTeamId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_PlayerId",
+                schema: "nfl",
                 table: "Players",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerSeasonProjections_IsDeleted",
+                schema: "nfl",
                 table: "PlayerSeasonProjections",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerSeasonProjections_PlayerId",
+                schema: "nfl",
                 table: "PlayerSeasonProjections",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerSeasons_IsDeleted",
+                schema: "nfl",
                 table: "PlayerSeasons",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayerSeasons_PlayerId",
+                schema: "nfl",
                 table: "PlayerSeasons",
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Quarters_IsDeleted",
+                schema: "nfl",
                 table: "Quarters",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Scores_IsDeleted",
+                schema: "nfl",
                 table: "Scores",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Scores_StadiumId",
+                schema: "nfl",
                 table: "Scores",
                 column: "StadiumId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Stadiums_IsDeleted",
+                schema: "nfl",
                 table: "Stadiums",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Stadiums_StadiumId",
+                schema: "nfl",
                 table: "Stadiums",
                 column: "StadiumId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Standings_IsDeleted",
+                schema: "nfl",
                 table: "Standings",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Standings_TeamEntityId",
+                schema: "nfl",
                 table: "Standings",
                 column: "TeamEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeamGames_IsDeleted",
+                schema: "nfl",
                 table: "TeamGames",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeamGames_TeamEntityId",
+                schema: "nfl",
                 table: "TeamGames",
                 column: "TeamEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teams_IsDeleted",
+                schema: "nfl",
                 table: "Teams",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teams_StadiumId",
+                schema: "nfl",
                 table: "Teams",
                 column: "StadiumId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeamSeasons_IsDeleted",
+                schema: "nfl",
                 table: "TeamSeasons",
                 column: "IsDeleted");
         }
@@ -1478,52 +1557,68 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "FantasyDefenseGameProjections");
+                name: "FantasyDefenseGameProjections",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "FantasyDefenseSeasonProjections");
+                name: "FantasyDefenseSeasonProjections",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "FantasyDefenseSeasons");
+                name: "FantasyDefenseSeasons",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "PlayerGameProjections");
+                name: "PlayerGameProjections",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "PlayerGames");
+                name: "PlayerGames",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "PlayerSeasonProjections");
+                name: "PlayerSeasonProjections",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "PlayerSeasons");
+                name: "PlayerSeasons",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "Quarters");
+                name: "Quarters",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "Scores");
+                name: "Scores",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "Standings");
+                name: "Standings",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "TeamSeasons");
+                name: "TeamSeasons",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "FantasyDefenseGames");
+                name: "FantasyDefenseGames",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "TeamGames");
+                name: "TeamGames",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "Players");
+                name: "Players",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "Teams");
+                name: "Teams",
+                schema: "nfl");
 
             migrationBuilder.DropTable(
-                name: "Stadiums");
+                name: "Stadiums",
+                schema: "nfl");
         }
     }
 }

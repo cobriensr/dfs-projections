@@ -17,6 +17,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("nfl")
                 .HasAnnotation("ProductVersion", "9.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -162,7 +163,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("TeamEntityId");
 
-                    b.ToTable("FantasyDefenseGames");
+                    b.ToTable("FantasyDefenseGames", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLFantasyDefenseGameProjection", b =>
@@ -305,7 +306,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("TeamEntityId");
 
-                    b.ToTable("FantasyDefenseGameProjections");
+                    b.ToTable("FantasyDefenseGameProjections", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLFantasyDefenseSeason", b =>
@@ -440,7 +441,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("FantasyDefenseSeasons");
+                    b.ToTable("FantasyDefenseSeasons", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLFantasyDefenseSeasonProjection", b =>
@@ -575,7 +576,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("FantasyDefenseSeasonProjections");
+                    b.ToTable("FantasyDefenseSeasonProjections", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLPlayer", b =>
@@ -697,7 +698,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("Players");
+                    b.ToTable("Players", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLPlayerGame", b =>
@@ -984,7 +985,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("TeamEntityId");
 
-                    b.ToTable("PlayerGames");
+                    b.ToTable("PlayerGames", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLPlayerGameProjection", b =>
@@ -1256,7 +1257,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("TeamEntityId");
 
-                    b.ToTable("PlayerGameProjections");
+                    b.ToTable("PlayerGameProjections", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLPlayerSeason", b =>
@@ -1514,7 +1515,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("PlayerSeasons");
+                    b.ToTable("PlayerSeasons", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLPlayerSeasonProjection", b =>
@@ -1772,7 +1773,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("PlayerSeasonProjections");
+                    b.ToTable("PlayerSeasonProjections", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLQuarter", b =>
@@ -1821,7 +1822,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     b.HasIndex("IsDeleted")
                         .HasDatabaseName("IX_Quarters_IsDeleted");
 
-                    b.ToTable("Quarters");
+                    b.ToTable("Quarters", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLScore", b =>
@@ -1953,7 +1954,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("StadiumId");
 
-                    b.ToTable("Scores");
+                    b.ToTable("Scores", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLStadium", b =>
@@ -2016,7 +2017,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("StadiumId");
 
-                    b.ToTable("Stadiums");
+                    b.ToTable("Stadiums", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLStanding", b =>
@@ -2121,7 +2122,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("TeamEntityId");
 
-                    b.ToTable("Standings");
+                    b.ToTable("Standings", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLTeam", b =>
@@ -2214,7 +2215,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("StadiumId");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Teams", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLTeamGame", b =>
@@ -2721,7 +2722,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
 
                     b.HasIndex("TeamEntityId");
 
-                    b.ToTable("TeamGames");
+                    b.ToTable("TeamGames", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLTeamSeason", b =>
@@ -3190,7 +3191,7 @@ namespace FantasySports.Infrastructure.Data.Migrations.NFL
                     b.HasIndex("IsDeleted")
                         .HasDatabaseName("IX_TeamSeasons_IsDeleted");
 
-                    b.ToTable("TeamSeasons");
+                    b.ToTable("TeamSeasons", "nfl");
                 });
 
             modelBuilder.Entity("FantasySports.Core.Entities.NFL.NFLFantasyDefenseGame", b =>
