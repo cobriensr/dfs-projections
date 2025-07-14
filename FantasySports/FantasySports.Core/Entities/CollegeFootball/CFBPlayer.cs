@@ -16,8 +16,7 @@ namespace FantasySports.Core.Entities.CollegeFootball
         public string? Class { get; set; }
         public int? Height { get; set; }
         public int? Weight { get; set; }
-        public string? Injurystatus
-        { get; set; }
+        public string? Injurystatus { get; set; }
         // Collections
         public virtual ICollection<CFBPlayerGame> GameStats { get; set; } = new List<CFBPlayerGame>();
         public virtual ICollection<CFBPlayerSeason> SeasonStats { get; set; } = new List<CFBPlayerSeason>();

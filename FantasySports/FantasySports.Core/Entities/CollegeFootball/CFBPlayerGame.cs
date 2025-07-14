@@ -34,26 +34,22 @@ namespace FantasySports.Core.Entities.CollegeFootball
         public string? Passingtouchdowns { get; set; }
         public string? Passinginterceptions { get; set; }
         public string? Passingrating { get; set; }
-
         public string? Rushingattempts { get; set; }
         public string? Rushingyards { get; set; }
         public string? Rushingyardsperattempt { get; set; }
         public string? Rushingtouchdowns { get; set; }
         public string? Rushinglong { get; set; }
-
         public string? Receptions { get; set; }
         public string? Receivingyards { get; set; }
         public string? Receivingyardsperreception { get; set; }
         public string? Receivingtouchdowns { get; set; }
         public string? Receivinglong { get; set; }
-
         public int? Fieldgoalsattempted { get; set; }
         public int? Fieldgoalsmade { get; set; }
         public int? Fieldgoalpercentage { get; set; }
         public int? Fieldgoalslongestmade { get; set; }
         public string? Extrapointsattempted { get; set; }
-        public string? Extrapointsmade
-        { get; set; }
+        public string? Extrapointsmade { get; set; }
         // Collections
         public virtual ICollection<CFBPlayerGame> PlayerStats { get; set; } = new List<CFBPlayerGame>();
     }

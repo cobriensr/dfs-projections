@@ -9,7 +9,6 @@ namespace FantasySports.Core.Entities.CollegeFootball
         public int? Number { get; set; }
         public string? Name { get; set; }
         public string? Awayscore { get; set; }
-        public string? Homescore
-        { get; set; }
+        public string? Homescore { get; set; }
     }
 }

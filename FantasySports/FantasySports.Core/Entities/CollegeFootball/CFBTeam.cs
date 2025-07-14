@@ -10,7 +10,7 @@ namespace FantasySports.Core.Entities.CollegeFootball
         public string? School { get; set; }
         public string? Name { get; set; }
         public int StadiumId { get; set; }
-        public virtual CFBStadium? Stadium { get; set; }
+        public virtual CFBStadium? StadiumEntity { get; set; }
         public string? Aprank { get; set; }
         public int? Wins { get; set; }
         public int? Losses { get; set; }
@@ -22,8 +22,7 @@ namespace FantasySports.Core.Entities.CollegeFootball
         public string? Shortdisplayname { get; set; }
         public int? Rankweek { get; set; }
         public int? Rankseason { get; set; }
-        public int? Rankseasontype
-        { get; set; }
+        public int? Rankseasontype { get; set; }
         // Collections
         public virtual ICollection<CFBPlayer> Players { get; set; } = new List<CFBPlayer>();
         public virtual ICollection<CFBGame> HomeGames { get; set; } = new List<CFBGame>();

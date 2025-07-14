@@ -52,7 +52,39 @@ namespace FantasySports.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Apply to all entities that inherit from CFBBaseEntity
+            // Use schema for CFB
+            modelBuilder.HasDefaultSchema("cfb");
+
+            // Configure CFB Game relationships
+            modelBuilder.Entity<CFBGame>(entity =>
+            {
+                entity.HasOne(g => g.HomeTeam)
+                    .WithMany(t => t.HomeGames)
+                    .HasForeignKey(g => g.HomeTeamId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(g => g.AwayTeam)
+                    .WithMany(t => t.AwayGames)
+                    .HasForeignKey(g => g.AwayTeamId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                // If you have stadium navigation
+                entity.HasOne(g => g.StadiumEntity)
+                    .WithMany()
+                    .HasForeignKey(g => g.StadiumId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // If you have player relationships
+            modelBuilder.Entity<CFBPlayer>(entity =>
+            {
+                entity.HasOne(p => p.TeamEntity)
+                    .WithMany(t => t.Players)
+                    .HasForeignKey(p => p.TeamId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Your existing base entity configuration
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(e => typeof(CFBBaseEntity).IsAssignableFrom(e.ClrType)))
             {

@@ -4,7 +4,7 @@ namespace FantasySports.Core.Entities.CollegeFootball
     {
         public int Id { get; set; }
         public int StadiumId { get; set; }
-        public virtual CFBStadium? Stadium { get; set; }
+        public virtual CFBStadium? StadiumEntity { get; set; }
         public bool? Active { get; set; }
         public string? Name { get; set; }
         public bool? Dome { get; set; }
